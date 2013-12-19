@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rm.kismet_cooking"
+    android:versionCode="3"
+    android:versionName="1.1" 
+    android:configChanges="orientation|keyboardHidden">
+
+   <uses-sdk android:minSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/micon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.google.android.youtube.player.YouTubeStandalonePlayer"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            
+ />
+         <activity
+            android:name="com.rm.kismet_cooking.MainActivity2"
+            android:label="@string/app_name" 
+             android:configChanges="orientation|keyboardHidden"
+            
+             ></activity>
+        <activity
+            android:name="com.rm.kismet_cooking.MainActivity"
+            android:label="@string/app_name"
+             android:configChanges="orientation|keyboardHidden" 
+              android:screenOrientation="portrait"
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

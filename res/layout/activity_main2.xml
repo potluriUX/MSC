@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="fill_parent"
+  android:layout_width="fill_parent" >
+ 	<LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+		 <FrameLayout 
+		    android:id="@+id/container"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"   
+		    android:gravity="bottom"
+		    android:background="#cd4022"
+		    android:padding="16dp">	  
+		  <Button
+		      android:id="@+id/roll"
+		      android:layout_width="150dp"
+		      android:layout_height="wrap_content"
+		      android:onClick="getUserYouTubeFeed"
+		      android:text="Roll"          
+		      android:textSize="15sp"
+		      android:textColor="#444"
+		      android:textColorHighlight="#999"
+		      android:layout_marginTop="40dp"
+		      android:layout_gravity="right"
+		      android:background="@drawable/button"   />
+		  <TextView android:text="Suggested Movie"
+		      android:id="@+id/suggestedMovie"
+		      android:padding="15dip"
+		      android:textSize="16dip"
+		      android:textColor="#ffffff"
+		      android:layout_marginTop="120dp"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"/>
+		  <com.rm.kismet_cooking.VideosListView
+		        android:id="@+id/videosListView"
+		        android:layout_width="fill_parent"
+		        android:layout_height="142dp"
+		        android:layout_marginTop="160dp"
+		        android:background="#efefef"/>
+		   <TextView 
+		       android:id="@+id/moreMovies"
+		       android:text="More Movies"
+		       android:padding="15dip"
+		       android:textSize="16dip"
+		       android:textColor="#ffffff"
+		       android:layout_marginTop="300dp"
+		       android:layout_width="fill_parent"
+		       android:layout_height="wrap_content"/>		
+			<com.rm.kismet_cooking.VideosListView2	        android:id="@+id/relatedVideosListView"
+		        android:layout_width="fill_parent"
+		        android:layout_height="700dp"
+		        android:layout_marginTop="340dp"
+		        android:background="#efefef"/>
+		</FrameLayout>
+	</LinearLayout>
+</ScrollView>
+

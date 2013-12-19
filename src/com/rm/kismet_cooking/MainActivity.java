@@ -161,13 +161,12 @@ public class MainActivity extends Activity
 
     	//flipCard();
     	
-    	String[] users = {"sribalajimovies", "shalimarcinema", "rajshritelugu", "thesantoshvideos",  
-    			"sribalajimovies", 
-    			"geethaarts","idreammovies", "sribalajimovies", "thesantoshvideos",  
-    			"geethaarts", "shemarootelugu", "adityacinema", "sribalajimovies",  
+    	String[] users = { 
+    			"vahchef", "JamieOliver",  "foodwishes", "BBCFood", "BarbecueWeb","ShowMeTheCurry",
+    			"EverydayFoodVideos","BBCFood", "robjnixon", "vahchef", "JamieOliver", "BBCFood"/*, "adityacinema", "sribalajimovies",  
     			"mangoVideos", "thesantoshvideos",
     			 "newvolgavideo",  "geethaarts",  "rajshritelugu", "shalimarcinema", 
-    			 "thecinecurrytelugu", "rajshritelugu", "sribalajimovies", "shalimarcinema"
+    			 "thecinecurrytelugu", "rajshritelugu", "sribalajimovies", "shalimarcinema"*/
     	};
 
     	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd]).run();

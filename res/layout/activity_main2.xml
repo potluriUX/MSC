@@ -25,7 +25,7 @@
 		      android:layout_marginTop="40dp"
 		      android:layout_gravity="right"
 		      android:background="@drawable/button"   />
-		  <TextView android:text="Suggested Movie"
+		  <TextView android:text="Suggested Recipe"
 		      android:id="@+id/suggestedMovie"
 		      android:padding="15dip"
 		      android:textSize="16dip"
@@ -41,7 +41,7 @@
 		        android:background="#efefef"/>
 		   <TextView 
 		       android:id="@+id/moreMovies"
-		       android:text="More Movies"
+		       android:text="More Recipes"
 		       android:padding="15dip"
 		       android:textSize="16dip"
 		       android:textColor="#ffffff"

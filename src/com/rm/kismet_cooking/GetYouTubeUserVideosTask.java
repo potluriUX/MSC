@@ -62,7 +62,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			JSONArray jsonArray;
 			JSONArray jsonArray_rel;
 		do{
-			url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&duration=long";
+			url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc";//&duration=long
 			HttpUriRequest request_ti = new HttpGet(url_request);
 			//HttpUriRequest request_ti = new HttpGet("https://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2&alt=jsonc&duration=long");
 			HttpResponse response_ti = client.execute(request_ti);

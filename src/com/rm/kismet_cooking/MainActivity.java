@@ -115,7 +115,7 @@ public class MainActivity extends Activity
     	};
 
     	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
-    	System.out.println(hmap);
+    	
         if(rnd > (users.length-2)){
         	rnd=0;
         }

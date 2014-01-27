@@ -1,6 +1,7 @@
 package com.rm.kismet_cooking;
 
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 	static private final String DEVELOPER_KEY = "AIzaSyAfnzhBO-Nzj119V3gdV4LpWaTRGGSyE0A";
 	static private final String VIDEO = "4SK0cUNMnMM";
 	
-	@Override
+	@SuppressLint("NewApi") @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ActionBar actionBar = getActionBar();
@@ -28,7 +29,9 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 	    youTubeView.initialize(DEVELOPER_KEY, this);
 	    Bundle b = getIntent().getExtras();
 		String value = b.getString("key");
-	
+		
+		DatabaseHandler db = new DatabaseHandler(this);			
+		db.addLink(new WebLinks(value));  
 		
 	    for (int i=0; i < 3; i++)
 	    {

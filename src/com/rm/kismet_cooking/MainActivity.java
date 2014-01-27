@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,14 +29,14 @@ import android.widget.Button;
  * </br>
  * @author ravi_manasa
  */
-public class MainActivity extends Activity 
-	{
+public class MainActivity extends Activity{
     // A reference to our list that will hold the video details
 	private VideosListView listView;
 	private VideosListView2 relatedListView;
 	private Handler mHandler = new Handler();
 	private int rnd;
 	private HashMap<String, String> hmap = new HashMap<String, String>() ;
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,27 +50,19 @@ public class MainActivity extends Activity
         listView = (VideosListView) findViewById(R.id.videosListView);
         relatedListView = (VideosListView2) findViewById(R.id.relatedVideosListView);
     	listView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Video selection = (Video)parent.getItemAtPosition(position)
-						;
-				
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				
 				 
+				Video selection = (Video)parent.getItemAtPosition(position);
+					 
 				Intent intent = new Intent(context, MainActivity2.class);
 				Bundle b = new Bundle();
+					
+				/*String selection = parent.getItemAtPosition(position).toString();
+				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);				
+				WebLinks w = db.getLink(selection);*/
 				
-				
-				/*String selection = parent.getItemAtPosition(position)
-						.toString();
-				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);
-			
-				
-				WebLinks w = db.getLink(selection);
-*/
 				b.putString("key", selection.getid());
-
 				intent.putExtras(b);
-
 				startActivity(intent);
 			}
 			
@@ -75,51 +70,40 @@ public class MainActivity extends Activity
     	relatedListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Video selection = (Video)parent.getItemAtPosition(position)
-						;
-				
-				 
+				Video selection = (Video)parent.getItemAtPosition(position);				 
 				Intent intent = new Intent(context, MainActivity2.class);
 				Bundle b = new Bundle();
-				
-				
-				/*String selection = parent.getItemAtPosition(position)
-						.toString();
+								
+				/*String selection = parent.getItemAtPosition(position).toString();
 				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);
-			
+				WebLinks w = db.getLink(selection);*/
 				
-				WebLinks w = db.getLink(selection);
-*/
 				b.putString("key", selection.getid());
-
 				intent.putExtras(b);
-
 				startActivity(intent);
 			}
 			
 		});
     }    
 
-    // This is the XML onClick listener to retreive a users video feed
+    // This is the XML onClick listener to retrieve a users video feed
     public void getUserYouTubeFeed(View v){
     	// We start a new task that does its work on its own thread
     	// We pass in a handler that will be called when the task has finished
     	// We also pass in the name of the user we are searching YouTube for
     	
     	String[] users = { 
-    			"vahchef", "JamieOliver",  "foodwishes", "BBCFood", "BarbecueWeb","ShowMeTheCurry",
-    			"EverydayFoodVideos","BBCFood", "robjnixon", "vahchef", "JamieOliver", "BBCFood"/*, "adityacinema", "sribalajimovies",  
-    			"mangoVideos", "thesantoshvideos",
-    			 "newvolgavideo",  "geethaarts",  "rajshritelugu", "shalimarcinema", 
-    			 "thecinecurrytelugu", "rajshritelugu", "sribalajimovies", "shalimarcinema"*/
+    			"LauraVitalesKitchen", "vahchef", "JamieOliver",  "foodwishes", "BBCFood", "BarbecueWeb","ShowMeTheCurry", 
+    			"EverydayFoodVideos","BBCFood", "robjnixon", "vahchef", "JamieOliver", "BBCFood", "LauraVitalesKitchen",
+    			"SimpleCookingChannel", "CookingChannel", "bettyskitchen", "foodwishes", "robjnixon", "OnePotChefShow", 
+    			"leanbodylifestyle", "wantanmien", "Maangchi", "runnyrunny999"
     	};
 
     	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
     	
         if(rnd > (users.length-2)){
         	rnd=0;
-        }
-        else{
+        }else{
         	rnd++;
         }
     }
@@ -141,7 +125,7 @@ public class MainActivity extends Activity
 	 * @param msg
 	 */
 	private void populateListWithVideos(Message msg) {
-		// Retreive the videos are task found from the data bundle sent back
+		// Retrieve the videos are task found from the data bundle sent back
 		Library lib = (Library) msg.getData().get(GetYouTubeUserVideosTask.LIBRARY);
 		
 		// Because we have created a custom ListView we don't have to worry about setting the adapter in the activity
@@ -151,7 +135,7 @@ public class MainActivity extends Activity
 	}
 	
 	private void populateListWithRelatedVideos(Message relmsg) {
-		// Retreive the videos are task found from the data bundle sent back
+		// Retrieve the videos are task found from the data bundle sent back
 		Library relatedlib = (Library) relmsg.getData().get(GetYouTubeUserVideosTask.RELATEDLIBRARY);
 		
 		// Because we have created a custom ListView we don't have to worry about setting the adapter in the activity
@@ -160,5 +144,29 @@ public class MainActivity extends Activity
 		
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_activity_actions, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	public void openHistory() {			 
+		Intent intent = new Intent(this, HistoryActivity.class);
+	    startActivity(intent);
+	}
+		
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_history:
+	            openHistory();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 	
 }

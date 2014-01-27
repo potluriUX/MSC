@@ -35,6 +35,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+        android:name="com.rm.kismet_cooking.HistoryActivity"
+        android:label="@string/app_name"
+        android:parentActivityName="com.rm.kismet_cooking.MainActivity" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.rm.kismet_cooking.MainActivity" />
+    </activity>
     </application>
 
 </manifest>

@@ -57,7 +57,8 @@
 		       android:layout_marginTop="300dp"
 		       android:layout_width="fill_parent"
 		       android:layout_height="wrap_content"/>		
-			<com.rm.kismet_cooking.VideosListView2	        android:id="@+id/relatedVideosListView"
+			<com.rm.kismet_cooking.VideosListView2	        
+			    android:id="@+id/relatedVideosListView"
 		        android:layout_width="fill_parent"
 		        android:layout_height="700dp"
 		        android:layout_marginTop="340dp"

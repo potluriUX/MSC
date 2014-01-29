@@ -78,7 +78,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public List<WebLinks> getLimLinks() {
         List<WebLinks> linkList = new ArrayList<WebLinks>();
         // Select All Query
-        String selectQuery = "select * from ( SELECT  * FROM " + TABLE_CONTACTS +" ORDER BY id DESC LIMIT 5)T order by id ASC";
+        String selectQuery = "SELECT  * FROM " + TABLE_CONTACTS +" ORDER BY id DESC LIMIT 5";// "select * from ( SELECT  * FROM " + TABLE_CONTACTS +" ORDER BY id DESC LIMIT 5)T order by T.id DESC";
      
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

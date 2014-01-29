@@ -75,6 +75,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return contact list
         return linkList;
     }
+    public List<WebLinks> getLimLinks() {
+        List<WebLinks> linkList = new ArrayList<WebLinks>();
+        // Select All Query
+        String selectQuery = "select * from ( SELECT  * FROM " + TABLE_CONTACTS +" ORDER BY id DESC LIMIT 5)T order by id ASC";
+     
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+       
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+            	
+                WebLinks link = new WebLinks();
+                link.set_id(Integer.parseInt(cursor.getString(0)));
+                link.set_videoid(cursor.getString(1));
+                // Adding contact to list
+                linkList.add(link);
+            } while (cursor.moveToNext());
+        }
+     
+        // return contact list
+        return linkList;
+    }
     
    WebLinks getLink(String videoId) {
         SQLiteDatabase db = this.getReadableDatabase();

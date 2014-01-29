@@ -2,6 +2,7 @@ package com.rm.kismet_cooking;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -32,16 +33,18 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 	// A handler that will be notified when the task is finished
 	private final Handler relatedReplyTo;
 	// The user we are querying on YouTube for videos
-	private final String videoId;
-
+	//private final String videoId;
+	private HashMap<String, String> hmap ;
 	/**
 	 * Don't forget to call run(); to start this task
 	 * @param replyTo - the handler you want to receive the response when this task has finished
 	 * @param videoId - the videoId of YouTube video
 	 */
-	public GetYouTubeHistoryVideosTask(Handler relatedReplyTo, String videoId) {
+	public GetYouTubeHistoryVideosTask(Handler relatedReplyTo, HashMap hmap) {
 		this.relatedReplyTo = relatedReplyTo;
-		this.videoId = videoId;
+		this.hmap = hmap;
+		//this.videoId = videoId;
+		
 	}
 	
 	@Override
@@ -54,29 +57,36 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 		
 			List<Video> relatedvideos = new ArrayList<Video>();
 			
+			 for (String key : hmap.keySet()) {
+				  
+				   
+				   url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+hmap.get(key)+"?v=2&alt=jsonc";
+					HttpUriRequest request_rel = new HttpGet(url_request_rel);
+					HttpResponse response_rel = client.execute(request_rel);
+					// Convert this response into a readable string
+					String jsonString_rel = StreamUtils.convertToString(response_rel.getEntity().getContent());
+					// Create a JSON object that we can use from the String 
+					JSONObject json_rel = new JSONObject(jsonString_rel);
+					JSONObject data =json_rel.getJSONObject("data");						
+					String id_rel = data.getString("id");			
+					String title_rel = " "+data.getString("title") + "\n\n Likes: " +data.getString("likeCount")+ "\n Views: " + data.getString("viewCount");
+					String url_rel;
+					try {
+						url_rel = data.getJSONObject("player").getString("mobile");
+					} catch (JSONException ignore) {
+						url_rel = data.getJSONObject("player").getString("default");
+					}
+					String thumbUrl_rel = data.getJSONObject("thumbnail").getString("hqDefault");
+
+					// Create the video object and add it to our list
+					relatedvideos.add(new Video(title_rel, url_rel, thumbUrl_rel, id_rel));
+				}
+
 				
-			url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+videoId+"?v=2&alt=jsonc";
-			HttpUriRequest request_rel = new HttpGet(url_request_rel);
-			HttpResponse response_rel = client.execute(request_rel);
-			// Convert this response into a readable string
-			String jsonString_rel = StreamUtils.convertToString(response_rel.getEntity().getContent());
-			// Create a JSON object that we can use from the String 
-			JSONObject json_rel = new JSONObject(jsonString_rel);
-			JSONObject data =json_rel.getJSONObject("data");						
-			String id_rel = data.getString("id");			
-			String title_rel = " "+data.getString("title") + "\n\n Likes: " +data.getString("likeCount")+ "\n Views: " + data.getString("viewCount");
-			String url_rel;
-			try {
-				url_rel = data.getJSONObject("player").getString("mobile");
-			} catch (JSONException ignore) {
-				url_rel = data.getJSONObject("player").getString("default");
-			}
-			String thumbUrl_rel = data.getJSONObject("thumbnail").getString("hqDefault");
 
-			// Create the video object and add it to our list
-			relatedvideos.add(new Video(title_rel, url_rel, thumbUrl_rel, id_rel));
+			
 
-			Library relatedlib = new Library(videoId, relatedvideos);
+			Library relatedlib = new Library("asdf", relatedvideos);
 			// Pack the Library into the bundle to send back to the Activity
 
 			Bundle reldata = new Bundle();

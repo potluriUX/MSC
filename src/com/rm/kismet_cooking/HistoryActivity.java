@@ -1,10 +1,12 @@
 package com.rm.kismet_cooking;
 
+import java.util.HashMap;
 import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,15 +14,20 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 
 public class HistoryActivity extends Activity {
+	private HashMap<String, String> hmap = new HashMap<String, String>() ;
 	private VideosListView2 historyListView;
 
     @SuppressLint("NewApi") 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Context context = this;
         setContentView(R.layout.activity_history);        
         historyListView = (VideosListView2) findViewById(R.id.historyVideosListView);
        
@@ -34,14 +41,16 @@ public class HistoryActivity extends Activity {
         String id= "1";
         WebLinks Links = db.getLinkByID(id);   
           
-        List<WebLinks> allLinks = db.getAllLinks();   
+        List<WebLinks> allLinks = db.getLimLinks();   
         for (WebLinks cn : allLinks) {
 	        String log = "Id: "+cn.get_id()+" ,VideoId: " + cn.get_videoid();
 	        //Writing Contacts to log
 	        Log.d(log);
+	        String str = String.valueOf(cn.get_videoid());
+	        hmap.put(str, str);
         }
-        String str = String.valueOf(Links.get_videoid());
-        new GetYouTubeHistoryVideosTask(responseRelatedHandler, str).run();
+        
+        new GetYouTubeHistoryVideosTask(responseRelatedHandler, hmap).run();
         
                 
         // Make sure we're running on Honeycomb or higher to use ActionBar APIs
@@ -49,6 +58,24 @@ public class HistoryActivity extends Activity {
             // Show the Up button in the action bar.
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        historyListView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				
+				 
+				Video selection = (Video)parent.getItemAtPosition(position);
+					 
+				Intent intent = new Intent(context, MainActivity2.class);
+				Bundle b = new Bundle();
+					
+				/*String selection = parent.getItemAtPosition(position).toString();
+				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);				
+				WebLinks w = db.getLink(selection);*/
+				
+				b.putString("key", selection.getid());
+				intent.putExtras(b);
+				startActivity(intent);
+			}
+			
+		});
     }
     Handler responseRelatedHandler = new Handler() {
 		public void handleMessage(Message relmsg) {

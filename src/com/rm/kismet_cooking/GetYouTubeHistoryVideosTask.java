@@ -2,8 +2,17 @@ package com.rm.kismet_cooking;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -56,11 +65,17 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 			String url_request_rel;
 		
 			List<Video> relatedvideos = new ArrayList<Video>();
+			   Map<String,String> sortedMap=sortByComparator(hmap);
+
+		        for (Map.Entry entry : sortedMap.entrySet()) 
+		        {
+			  
+			   // do something
 			
-			 for (String key : hmap.keySet()) {
+			 
 				  
-				   
-				   url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+hmap.get(key)+"?v=2&alt=jsonc";
+				 
+				   url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+entry.getValue()+"?v=2&alt=jsonc";
 					HttpUriRequest request_rel = new HttpGet(url_request_rel);
 					HttpResponse response_rel = client.execute(request_rel);
 					// Convert this response into a readable string
@@ -77,7 +92,7 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 						url_rel = data.getJSONObject("player").getString("default");
 					}
 					String thumbUrl_rel = data.getJSONObject("thumbnail").getString("hqDefault");
-
+					Log.e(id_rel);
 					// Create the video object and add it to our list
 					relatedvideos.add(new Video(title_rel, url_rel, thumbUrl_rel, id_rel));
 				}
@@ -107,4 +122,26 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 			Log.e("Feck", e);
 		}
 	}
+	  private static Map sortByComparator(Map unsortMap)
+	   {
+	        List list=new LinkedList(unsortMap.entrySet());
+	        //sort list based on comparator
+	        Collections.sort(list,new Comparator()
+	        {
+	             public int compare(Object o1,Object o2)
+	             {
+	     return ((Comparable)((Map.Entry)(o2)).getKey()).compareTo(((Map.Entry) (o1)).getKey());
+	             }
+	        });
+
+	        //put sorted list into map again
+	    Map sortedMap=new LinkedHashMap();
+	    for (Iterator it=list.iterator();it.hasNext();)
+	    {
+	         Map.Entry entry=(Map.Entry)it.next();
+	         sortedMap.put(entry.getKey(),entry.getValue());
+	    }
+	    return sortedMap;
+	   }   
+	
 }

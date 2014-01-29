@@ -47,7 +47,7 @@ public class HistoryActivity extends Activity {
 	        //Writing Contacts to log
 	        Log.d(log);
 	        String str = String.valueOf(cn.get_videoid());
-	        hmap.put(str, str);
+	        hmap.put(String.valueOf(cn.get_id()), str);
         }
         
         new GetYouTubeHistoryVideosTask(responseRelatedHandler, hmap).run();

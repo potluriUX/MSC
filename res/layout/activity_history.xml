@@ -10,8 +10,8 @@
  <TextView android:text="Previously Watched Videos"
 		      android:id="@+id/HistoryVideos"
 		      android:paddingBottom="15dip"
-		       android:paddingTop="15dip"
-		      android:textSize="16dip"
+		      android:paddingTop="15dip"
+		      android:textSize="16sp"
 		      android:textColor="#ffffff"
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"/>

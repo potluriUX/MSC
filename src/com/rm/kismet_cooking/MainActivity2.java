@@ -14,6 +14,7 @@ import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 
+
 public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
 	static private final String DEVELOPER_KEY = "AIzaSyAfnzhBO-Nzj119V3gdV4LpWaTRGGSyE0A";
@@ -30,10 +31,13 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 	    Bundle b = getIntent().getExtras();
 		String value = b.getString("key");
 		
-		DatabaseHandler db = new DatabaseHandler(this);			
-		db.addLink(new WebLinks(value));  
+		Boolean flag = b.getBoolean("historyflag");
+		if(flag != true){
+			DatabaseHandler db = new DatabaseHandler(this);			
+			db.addLink(new WebLinks(value));  
+		}  
 		
-	    for (int i=0; i < 3; i++)
+	    for (int i=0; i < 2; i++)
 	    {
 	    	 Toast.makeText(this, "Hit settings button in player bar to open in YouTube and " +
 	    	 		"then share to Smart TV", Toast.LENGTH_LONG).show();

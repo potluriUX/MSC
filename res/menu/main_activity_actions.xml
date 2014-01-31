@@ -4,10 +4,13 @@
           android:title="@string/action_history"
           android:showAsAction="never" 
            />
+      
       <item android:id="@+id/action_fav"
-          android:title="@string/action_fav"
-          android:showAsAction="never" 
-           />
+              android:title="WatchLater"
+             android:icon="@drawable/globe_icon"
+             android:textAllCaps="false"
+           
+              android:showAsAction="ifRoom|withText" android:checkable="true"/>
 
 </menu>
 

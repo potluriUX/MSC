@@ -6,11 +6,10 @@
            />
       
       <item android:id="@+id/action_fav"
-              android:title="WatchLater"
-             android:icon="@drawable/globe_icon"
-             android:textAllCaps="false"
-           
-              android:showAsAction="ifRoom|withText" android:checkable="true"/>
+             android:title="WatchLater"
+             android:icon="@drawable/watch_later"
+             android:textAllCaps="false"           
+             android:showAsAction="ifRoom|withText" android:checkable="true"/>
 
 </menu>
 

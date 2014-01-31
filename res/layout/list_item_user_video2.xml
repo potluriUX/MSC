@@ -37,7 +37,7 @@
 		    android:id="@+id/fav"
 			android:layout_width="24dp"
 	      	android:layout_height="24dp"
-	      	android:background="@drawable/plus3"
+	      	android:background="@drawable/watch1"
 	      	android:layout_alignParentRight="true"	      	
 	      	android:contentDescription="Add to Favourites"/>
 		

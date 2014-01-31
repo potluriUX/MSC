@@ -1,16 +1,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_height="fill_parent"
-  android:layout_width="fill_parent" >
+  android:layout_width="fill_parent" 
+  android:background="#cd4022">
   <LinearLayout 
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"    
     android:orientation="vertical">
 	<FrameLayout 
 		    android:id="@+id/container"
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"   
 		    android:gravity="bottom"
-		    android:background="#cd4022"
 		    android:padding="16dp">	
  		<TextView android:text="Previously Watched Videos"
 	    	android:id="@+id/HistoryVideos"
@@ -19,7 +19,7 @@
 	      	android:textColor="#ffffff"
 	      	android:layout_width="fill_parent"
 	      	android:layout_height="wrap_content"/>
-		<com.rm.kismet_cooking.VideosListView2	        
+		<com.rm.kismet_cooking.VideosListView2	          
 		    android:id="@+id/historyVideosListView"
 	        android:layout_width="fill_parent"
 	        android:layout_height="300dp"
@@ -28,3 +28,4 @@
 	</FrameLayout>  
   </LinearLayout>
 </ScrollView>
+   

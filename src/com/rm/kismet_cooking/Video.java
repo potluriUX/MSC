@@ -23,7 +23,7 @@ public class Video implements Serializable {
 	private String id;
 	public Context context;
 	private int currentImage = 0;
-	
+	private String prevvalue;
 	OnClickListener listener1 = new OnClickListener(){ // the book's action
         @Override
         public void onClick(View v) {
@@ -35,12 +35,15 @@ public class Video implements Serializable {
         	
             //Set the image depending on the counter.
             switch (currentImage) {
+            
             case 0: b1.setBackgroundResource(R.drawable.plus3); 
                     break;
             case 1: b1.setBackgroundResource(R.drawable.plus2);
 		            String value = id;
-		    		DatabaseHandler db = new DatabaseHandler(context);			
-		    		db.addLink(new WebLinks(value));   
+		    		DatabaseHandler db = new DatabaseHandler(context);	
+		    		if(value!=prevvalue)
+		    			db.addFav(new WebLinks(value));   
+		    		 prevvalue = value;
             		break;
             default:b1.setBackgroundResource(R.drawable.plus3);     
             }

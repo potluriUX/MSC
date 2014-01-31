@@ -31,7 +31,9 @@ public class HistoryActivity extends Activity {
         final Context context = this;
         setContentView(R.layout.activity_history);        
         historyListView = (VideosListView2) findViewById(R.id.historyVideosListView);
-       
+        Bundle b = getIntent().getExtras();
+		String value = b.getString("favactivity");
+		
         DatabaseHandler db = new DatabaseHandler(this);
  
         // Inserting Contacts
@@ -43,12 +45,20 @@ public class HistoryActivity extends Activity {
         // WebLinks Links = db.getLinkByID(id);    
         //db.deleteLink(id);
         int i = 0;
-        List<WebLinks> allLinks = db.getLimLinks();        
+        List<WebLinks> allLinks = null;
+        
+        if(value.equals("true")){
+        	
+        	allLinks = db.getLimFavs();
+        }else{
+        	
+        	allLinks = db.getLimLinks();        
+        }
         if(!(allLinks.isEmpty())){
 	        for (WebLinks cn : allLinks) {
 		        String log = "Id: "+cn.get_id()+" ,VideoId: " + cn.get_videoid();
 		        //Writing Contacts to log
-		        Log.d(log);
+		        
 		        String str = String.valueOf(cn.get_videoid());
 		        hmap.put(String.valueOf(cn.get_id()), str);
 		        i++;

@@ -163,6 +163,22 @@ public class MainActivity extends Activity{
 	
 	public void openHistory() {			 
 		Intent intent = new Intent(this, HistoryActivity.class);
+Bundle b = new Bundle();
+		
+	
+		
+		b.putString("favactivity", "false");
+		intent.putExtras(b);
+	    startActivity(intent);
+	}
+	public void openFav() {			 
+		Intent intent = new Intent(this, HistoryActivity.class);
+		Bundle b = new Bundle();
+		
+
+		
+		b.putString("favactivity", "true");
+		intent.putExtras(b);
 	    startActivity(intent);
 	}
 		
@@ -172,6 +188,9 @@ public class MainActivity extends Activity{
 	    switch (item.getItemId()) {
 	        case R.id.action_history:
 	            openHistory();
+	            return true;
+	        case R.id.action_fav:
+	            openFav();
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);

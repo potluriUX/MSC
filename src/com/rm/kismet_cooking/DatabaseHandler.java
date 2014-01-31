@@ -21,7 +21,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
  
     // Contacts table name
     private static final String TABLE_CONTACTS = "history";
- 
+    private static final String TABLE_FAV = "fav";
     // Contacts Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_VIDEOID = "videoId";
@@ -36,8 +36,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_CONTACTS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_VIDEOID + " TEXT)";
-       
+        String CREATE_CONTACTS_TABLE2 = "CREATE TABLE " + TABLE_FAV + "("
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_VIDEOID + " TEXT)";
         db.execSQL(CREATE_CONTACTS_TABLE);
+        db.execSQL(CREATE_CONTACTS_TABLE2);
      	//	createData(db);
       
     }
@@ -79,6 +81,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         List<WebLinks> linkList = new ArrayList<WebLinks>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_CONTACTS +" ORDER BY id DESC LIMIT 5";// "select * from ( SELECT  * FROM " + TABLE_CONTACTS +" ORDER BY id DESC LIMIT 5)T order by T.id DESC";
+     
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+       
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+            	
+                WebLinks link = new WebLinks();
+                link.set_id(Integer.parseInt(cursor.getString(0)));
+                link.set_videoid(cursor.getString(1));
+                // Adding contact to list
+                linkList.add(link);
+            } while (cursor.moveToNext());
+        }
+     
+        // return contact list
+        return linkList;
+    }
+    public List<WebLinks> getLimFavs() {
+        List<WebLinks> linkList = new ArrayList<WebLinks>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_FAV +" ORDER BY id DESC LIMIT 5";// "select * from ( SELECT  * FROM " + TABLE_CONTACTS +" ORDER BY id DESC LIMIT 5)T order by T.id DESC";
      
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -148,7 +173,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_CONTACTS, null, values);
         
     }
-    
+    public void addFav(WebLinks link) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        
+        ContentValues values = new ContentValues();
+        values.put(KEY_VIDEOID, link.get_videoid()); 
+        //Log.d("Name: ", "asdf");
+        // Inserting Row
+        db.insert(TABLE_FAV, null, values);
+        
+    }
     // Deleting single contact
 	public void deleteLink(String id) {
 	    SQLiteDatabase db = this.getWritableDatabase();

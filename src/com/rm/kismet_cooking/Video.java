@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,7 +24,7 @@ public class Video implements Serializable {
 	public Context context;
 	private int currentImage = 0;
 	
-	OnClickListener listener = new OnClickListener(){ // the book's action
+	OnClickListener listener1 = new OnClickListener(){ // the book's action
         @Override
         public void onClick(View v) {
                             
@@ -44,6 +45,18 @@ public class Video implements Serializable {
             default:b1.setBackgroundResource(R.drawable.plus3);     
             }
             
+        }
+    };
+    
+    OnClickListener listener2 = new OnClickListener(){ // the book's action
+        @Override
+        public void onClick(View v) {
+                            
+        	Intent intent = new Intent(context, MainActivity2.class);
+			Bundle b = new Bundle();
+			b.putString("key", id);
+			intent.putExtras(b);
+			context.startActivity(intent);            
         }
     };
 	

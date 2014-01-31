@@ -65,7 +65,7 @@ public class MainActivity extends Activity{
 			}
 			
 		});
-    	relatedListView.setOnItemClickListener(new OnItemClickListener() {
+    	/*relatedListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Video selection = (Video)parent.getItemAtPosition(position);				 
@@ -76,12 +76,12 @@ public class MainActivity extends Activity{
 				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);
 				WebLinks w = db.getLink(selection);*/
 				
-				b.putString("key", selection.getid());
+			/*	b.putString("key", selection.getid());
 				intent.putExtras(b);
 				startActivity(intent);
 			}
 			
-		});
+		});*/
     	
     	try {
             ViewConfiguration config = ViewConfiguration.get(this);

@@ -74,7 +74,9 @@ public class VideosAdapter2 extends BaseAdapter {
 		thumb.setImageDrawable(video.getThumbUrl());
 		// Set the title for the list item
 		title.setText(video.getTitle());
-		fav.setOnClickListener(video.listener);
+		fav.setOnClickListener(video.listener1);
+		title.setOnClickListener(video.listener2);
+		thumb.setOnClickListener(video.listener2);
 		return convertView;
 	}
 }

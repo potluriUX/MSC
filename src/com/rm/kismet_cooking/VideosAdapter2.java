@@ -5,8 +5,11 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -22,6 +25,8 @@ public class VideosAdapter2 extends BaseAdapter {
 	List<Video> videos;
 	// An inflator to use when creating rows
 	private LayoutInflater mInflater;
+	private Context context;
+	
 	
 	/**
 	 * @param context this is the context that the list will be shown in - used to create new list rows
@@ -30,6 +35,7 @@ public class VideosAdapter2 extends BaseAdapter {
 	public VideosAdapter2(Context context, List<Video> videos) {
 		this.videos = videos;
 		this.mInflater = LayoutInflater.from(context);
+		this.context = context;
 	}
 
 	@Override
@@ -60,13 +66,15 @@ public class VideosAdapter2 extends BaseAdapter {
 		UrlImageView2 thumb = (UrlImageView2) convertView.findViewById(R.id.userVideoThumbImageView2);
 		
 		TextView title = (TextView) convertView.findViewById(R.id.userVideoTitleTextView2); 
+		Button fav = (Button) convertView.findViewById(R.id.fav); 
 		// Get a single video from our list
 		Video video = videos.get(position);
+		video.context = context;
 		// Set the image for the list item
 		thumb.setImageDrawable(video.getThumbUrl());
 		// Set the title for the list item
 		title.setText(video.getTitle());
-		
+		fav.setOnClickListener(video.listener);
 		return convertView;
 	}
 }

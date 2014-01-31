@@ -2,6 +2,12 @@ package com.rm.kismet_cooking;
 
 import java.io.Serializable;
 
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
 /**
  * This is a representation of a users video off YouTube
  * @author ravi_manasa
@@ -14,6 +20,32 @@ public class Video implements Serializable {
 	// A link to a still image of the youtube video
 	private String thumbUrl;
 	private String id;
+	public Context context;
+	private int currentImage = 0;
+	
+	OnClickListener listener = new OnClickListener(){ // the book's action
+        @Override
+        public void onClick(View v) {
+                            
+        	currentImage++;
+            currentImage = currentImage % 2;
+
+        	Button b1 = (Button)v.findViewById(R.id.fav);
+        	
+            //Set the image depending on the counter.
+            switch (currentImage) {
+            case 0: b1.setBackgroundResource(R.drawable.plus3); 
+                    break;
+            case 1: b1.setBackgroundResource(R.drawable.plus2);
+		            String value = id;
+		    		DatabaseHandler db = new DatabaseHandler(context);			
+		    		db.addLink(new WebLinks(value));   
+            		break;
+            default:b1.setBackgroundResource(R.drawable.plus3);     
+            }
+            
+        }
+    };
 	
 	public Video(String title, String url, String thumbUrl, String id) {
 		super();
@@ -22,6 +54,15 @@ public class Video implements Serializable {
 		this.thumbUrl = thumbUrl;
 		this.id = id;
 	}
+	public Video(String title, String url, String thumbUrl, String id, Context context)
+    {
+		super();
+		this.title = title;
+		this.url = url;
+		this.thumbUrl = thumbUrl;
+		this.id = id;
+        this.context = context;
+    }
 
 	/**
 	 * @return the title of the video

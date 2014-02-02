@@ -34,6 +34,7 @@ public class MainActivity extends Activity{
 	private VideosListView2 relatedListView;
 	private int rnd;
 	private HashMap<String, String> hmap = new HashMap<String, String>() ;
+	private String previd;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -60,7 +61,10 @@ public class MainActivity extends Activity{
 				WebLinks w = db.getLink(selection);*/
 				
 				b.putString("key", selection.getid());
+				b.putString("previd", previd);
 				intent.putExtras(b);
+				previd = selection.getid();
+				Log.d(previd + "previd");
 				startActivity(intent);
 			}
 			

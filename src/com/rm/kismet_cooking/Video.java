@@ -24,6 +24,7 @@ public class Video implements Serializable {
 	public Context context;
 	private int currentImage = 0;
 	private String prevvalue;
+	private String previd;
 	OnClickListener listener1 = new OnClickListener(){ // the book's action
         @Override
         public void onClick(View v) {
@@ -63,6 +64,9 @@ public class Video implements Serializable {
         	Intent intent = new Intent(context, MainActivity2.class);
 			Bundle b = new Bundle();
 			b.putString("key", id);
+			b.putString("previd", previd);
+			
+			previd = id;
 			intent.putExtras(b);
 			context.startActivity(intent);            
         }

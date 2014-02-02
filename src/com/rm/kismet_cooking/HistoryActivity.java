@@ -64,11 +64,23 @@ public class HistoryActivity extends Activity {
 		        i++;
 	        }
 	        VideosListView historyVideosListView = (VideosListView) findViewById(R.id.historyVideosListView);
+	        TextView noHistory = (TextView) findViewById(R.id.HistoryVideos);
+	        if(value.equals("true")){
+	        	noHistory.setText("Watch later Videos");
+        	}
+        	
+	        
 	        historyVideosListView.getLayoutParams().height = i*280;	        
 	        new GetYouTubeHistoryVideosTask(responseRelatedHandler, hmap).run();
         }else{
         	TextView noHistory = (TextView) findViewById(R.id.HistoryVideos);
-        	noHistory.setText("No History Avaliable");
+        	if(value.equals("true")){
+        		noHistory.setText("No Watch later Videos Avaliable");
+        	}
+        	else{
+        		noHistory.setText("No History Videos Avaliable");
+        		
+        	}
         }
                 
         // Make sure we're running on Honeycomb or higher to use ActionBar APIs

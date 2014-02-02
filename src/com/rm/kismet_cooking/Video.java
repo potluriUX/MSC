@@ -32,15 +32,20 @@ public class Video implements Serializable {
             currentImage = currentImage % 2;
 
         	Button b1 = (Button)v.findViewById(R.id.fav);
-        	
+        	 DatabaseHandler db = new DatabaseHandler(context);	
             //Set the image depending on the counter.
             switch (currentImage) {
-            
+           
             case 0: b1.setBackgroundResource(R.drawable.watch1); 
+            String value2 = id;
+    		
+    		
+    			db.deleteFav(id);   
+    		
                     break;
             case 1: b1.setBackgroundResource(R.drawable.watch3);
 		            String value = id;
-		    		DatabaseHandler db = new DatabaseHandler(context);	
+		    		//DatabaseHandler db = new DatabaseHandler(context);	
 		    		if(value!=prevvalue)
 		    			db.addFav(new WebLinks(value));   
 		    		 prevvalue = value;

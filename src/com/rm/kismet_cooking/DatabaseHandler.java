@@ -183,10 +183,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_FAV, null, values);
         
     }
-    // Deleting single contact
-	public void deleteLink(String id) {
+    public void deleteLink(String id){
+    	 SQLiteDatabase db = this.getWritableDatabase();
+ 	    db.delete(TABLE_CONTACTS, KEY_ID + " = ?", new String[] { id });
+ 	    db.close();
+    }
+    // Deleting single fav
+	public void deleteFav(String id) {
 	    SQLiteDatabase db = this.getWritableDatabase();
-	    db.delete(TABLE_CONTACTS, KEY_ID + " = ?", new String[] { id });
+	    db.delete(TABLE_FAV, KEY_VIDEOID + " = ?", new String[] { id });
 	    db.close();
 	}
     

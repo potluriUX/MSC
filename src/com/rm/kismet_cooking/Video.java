@@ -23,7 +23,7 @@ public class Video implements Serializable {
 	private String id;
 	public Context context;
 	private int currentImage = 0;
-	private String prevvalue;
+	//private String prevvalue;
 	private String previd;
 	OnClickListener listener1 = new OnClickListener(){ // the book's action
         @Override
@@ -41,15 +41,15 @@ public class Video implements Serializable {
             String value2 = id;
     		
     		//prevvalue = null;
-    		//	db.deleteFav(id);   
+    			db.deleteFav(id);   
     		
                     break;
             case 1: b1.setBackgroundResource(R.drawable.watch3);
 		            String value = id;
 		    		//DatabaseHandler db = new DatabaseHandler(context);	
-		    		if(value!=prevvalue)
+		    		
 		    			db.addFav(new WebLinks(value));   
-		    		 prevvalue = value;
+		    		 
             		break;
             default:b1.setBackgroundResource(R.drawable.watch1);     
             }

@@ -19,7 +19,7 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 
 	static private final String DEVELOPER_KEY = "AIzaSyAfnzhBO-Nzj119V3gdV4LpWaTRGGSyE0A";
 	static private final String VIDEO = "4SK0cUNMnMM";
-	
+	private String prevvalue;
 	@SuppressLint("NewApi") @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,8 +33,11 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 		
 		Boolean flag = b.getBoolean("historyflag");
 		if(flag != true){
-			DatabaseHandler db = new DatabaseHandler(this);			
-			db.addLink(new WebLinks(value));  
+			DatabaseHandler db = new DatabaseHandler(this);	
+			
+			if(value!=prevvalue)
+				db.addLink(new WebLinks(value));     
+    		 prevvalue = value;
 		}  
 		
 	    for (int i=0; i < 2; i++)

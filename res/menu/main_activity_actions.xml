@@ -7,8 +7,10 @@
       
       <item android:id="@+id/action_fav"
              android:title="WatchLater"
-             android:icon="@drawable/watch_later"
-             android:textAllCaps="false"           
+             android:icon="@drawable/watch5"
+             android:textAllCaps="false"   
+             android:layout_width="24dp"
+	      	 android:layout_height="24dp"        
              android:showAsAction="ifRoom|withText" android:checkable="true"/>
 
 </menu>

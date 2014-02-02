@@ -36,16 +36,16 @@ public class Video implements Serializable {
             //Set the image depending on the counter.
             switch (currentImage) {
             
-            case 0: b1.setBackgroundResource(R.drawable.watch2); 
+            case 0: b1.setBackgroundResource(R.drawable.watch1); 
                     break;
-            case 1: b1.setBackgroundResource(R.drawable.watch1);
+            case 1: b1.setBackgroundResource(R.drawable.watch3);
 		            String value = id;
 		    		DatabaseHandler db = new DatabaseHandler(context);	
 		    		if(value!=prevvalue)
 		    			db.addFav(new WebLinks(value));   
 		    		 prevvalue = value;
             		break;
-            default:b1.setBackgroundResource(R.drawable.plus3);     
+            default:b1.setBackgroundResource(R.drawable.watch1);     
             }
             
         }

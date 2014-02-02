@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 public class HistoryActivity extends Activity {
 	private HashMap<String, String> hmap = new HashMap<String, String>() ;
-	private VideosListView2 historyListView;
+	private VideosListView historyListView;
 
     @SuppressLint("NewApi") 
     @Override
@@ -30,7 +30,7 @@ public class HistoryActivity extends Activity {
         super.onCreate(savedInstanceState);
         final Context context = this;
         setContentView(R.layout.activity_history);        
-        historyListView = (VideosListView2) findViewById(R.id.historyVideosListView);
+        historyListView = (VideosListView) findViewById(R.id.historyVideosListView);
         Bundle b = getIntent().getExtras();
 		String value = b.getString("favactivity");
 		
@@ -63,7 +63,7 @@ public class HistoryActivity extends Activity {
 		        hmap.put(String.valueOf(cn.get_id()), str);
 		        i++;
 	        }
-	        VideosListView2 historyVideosListView = (VideosListView2) findViewById(R.id.historyVideosListView);
+	        VideosListView historyVideosListView = (VideosListView) findViewById(R.id.historyVideosListView);
 	        historyVideosListView.getLayoutParams().height = i*280;	        
 	        new GetYouTubeHistoryVideosTask(responseRelatedHandler, hmap).run();
         }else{

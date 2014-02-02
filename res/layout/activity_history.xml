@@ -19,7 +19,7 @@
 	      	android:textColor="#ffffff"
 	      	android:layout_width="fill_parent"
 	      	android:layout_height="wrap_content"/>
-		<com.rm.kismet_cooking.VideosListView2	          
+		<com.rm.kismet_cooking.VideosListView	          
 		    android:id="@+id/historyVideosListView"
 	        android:layout_width="fill_parent"
 	        android:layout_height="300dp"

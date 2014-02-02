@@ -30,7 +30,7 @@ import java.lang.reflect.Field;
  */
 public class MainActivity extends Activity{
     // A reference to our list that will hold the video details
-	private VideosListView listView;
+	private VideosListView2 listView;
 	private VideosListView2 relatedListView;
 	private int rnd;
 	private HashMap<String, String> hmap = new HashMap<String, String>() ;
@@ -45,7 +45,7 @@ public class MainActivity extends Activity{
         bt.performClick();               
        
         
-        listView = (VideosListView) findViewById(R.id.videosListView);
+        listView = (VideosListView2) findViewById(R.id.videosListView);
         relatedListView = (VideosListView2) findViewById(R.id.relatedVideosListView);
     	listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				

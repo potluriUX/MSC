@@ -107,7 +107,15 @@ public class MainActivity extends Activity{
     			"SimpleCookingChannel", "CookingChannel", "bettyskitchen", "foodwishes", "robjnixon", "OnePotChefShow", 
     			"leanbodylifestyle", "wantanmien", "Maangchi", "runnyrunny999"
     	};
-
+    	/*String[] users = {"sribalajimovies", "shalimarcinema", "rajshritelugu", "thesantoshvideos",  
+    			"sribalajimovies", 
+    			"geethaarts","idreammovies", "sribalajimovies", "thesantoshvideos",  
+    			"geethaarts", "shemarootelugu", "adityacinema", "sribalajimovies",  
+    			"mangoVideos", "thesantoshvideos",
+    			 "newvolgavideo",  "geethaarts",  "rajshritelugu", "shalimarcinema", 
+    			 "thecinecurrytelugu", "rajshritelugu", "sribalajimovies", "shalimarcinema"
+    	};
+*/
     	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
     	
         if(rnd > (users.length-2)){

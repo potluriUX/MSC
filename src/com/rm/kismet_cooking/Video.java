@@ -39,7 +39,7 @@ public class Video implements Serializable {
             case 0: b1.setBackgroundResource(R.drawable.watch1); 
             String value2 = id;
     		
-    		
+    		prevvalue = null;
     			db.deleteFav(id);   
     		
                     break;

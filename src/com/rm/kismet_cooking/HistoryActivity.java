@@ -23,14 +23,14 @@ import android.widget.TextView;
 public class HistoryActivity extends Activity {
 	private HashMap<String, String> hmap = new HashMap<String, String>() ;
 	private VideosListView3 historyListView;
-
+	private VideosListView historyListViewActual;
     @SuppressLint("NewApi") 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Context context = this;
         setContentView(R.layout.activity_history);        
-        historyListView = (VideosListView3) findViewById(R.id.historyVideosListView);
+        
         Bundle b = getIntent().getExtras();
 		String value = b.getString("favactivity");
 		
@@ -48,10 +48,10 @@ public class HistoryActivity extends Activity {
         List<WebLinks> allLinks = null;
         
         if(value.equals("true")){
-        	
+        	historyListView = (VideosListView3) findViewById(R.id.historyVideosListViewFav);
         	allLinks = db.getLimFavs();
         }else{
-        	
+        	historyListViewActual = (VideosListView) findViewById(R.id.historyVideosListViewActual);
         	allLinks = db.getLimLinks();        
         }
         if(!(allLinks.isEmpty())){
@@ -63,14 +63,57 @@ public class HistoryActivity extends Activity {
 		        hmap.put(String.valueOf(cn.get_id()), str);
 		        i++;
 	        }
-	        VideosListView3 historyVideosListView = (VideosListView3) findViewById(R.id.historyVideosListView);
+	       // VideosListView3 historyVideosListView = (VideosListView3) findViewById(R.id.historyVideosListView);
 	        TextView noHistory = (TextView) findViewById(R.id.HistoryVideos);
 	        if(value.equals("true")){
 	        	noHistory.setText("Watch later Videos");
         	}
         	
 	        
-	        historyVideosListView.getLayoutParams().height = i*300;	        
+	       
+	        if(value.equals("true")){
+	        	historyListView.getLayoutParams().height = i*300;	
+	        	   historyListView.setOnItemClickListener(new OnItemClickListener() {
+	       			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				
+	       				 
+	       				Video selection = (Video)parent.getItemAtPosition(position);
+	       					 
+	       				Intent intent = new Intent(context, MainActivity2.class);
+	       				Bundle b = new Bundle();
+	       					
+	       				/*String selection = parent.getItemAtPosition(position).toString();
+	       				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);				
+	       				WebLinks w = db.getLink(selection);*/
+	       				
+	       				b.putString("key", selection.getid());
+	       				b.putBoolean("historyflag", true);
+	       				intent.putExtras(b);
+	       				startActivity(intent);
+	       			}
+	       			
+	       		});
+	        }else{
+	        	historyListViewActual.getLayoutParams().height = i*300;	   
+	        	historyListViewActual.setOnItemClickListener(new OnItemClickListener() {
+	       			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				
+	       				 
+	       				Video selection = (Video)parent.getItemAtPosition(position);
+	       					 
+	       				Intent intent = new Intent(context, MainActivity2.class);
+	       				Bundle b = new Bundle();
+	       					
+	       				/*String selection = parent.getItemAtPosition(position).toString();
+	       				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);				
+	       				WebLinks w = db.getLink(selection);*/
+	       				
+	       				b.putString("key", selection.getid());
+	       				b.putBoolean("historyflag", true);
+	       				intent.putExtras(b);
+	       				startActivity(intent);
+	       			}
+	       			
+	       		});
+	        }
 	        new GetYouTubeHistoryVideosTask(responseRelatedHandler, hmap).run();
         }else{
         	TextView noHistory = (TextView) findViewById(R.id.HistoryVideos);
@@ -88,25 +131,7 @@ public class HistoryActivity extends Activity {
             // Show the Up button in the action bar.
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        historyListView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				
-				 
-				Video selection = (Video)parent.getItemAtPosition(position);
-					 
-				Intent intent = new Intent(context, MainActivity2.class);
-				Bundle b = new Bundle();
-					
-				/*String selection = parent.getItemAtPosition(position).toString();
-				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);				
-				WebLinks w = db.getLink(selection);*/
-				
-				b.putString("key", selection.getid());
-				b.putBoolean("historyflag", true);
-				intent.putExtras(b);
-				startActivity(intent);
-			}
-			
-		});
+     
     }
     Handler responseRelatedHandler = new Handler() {
 		public void handleMessage(Message relmsg) {

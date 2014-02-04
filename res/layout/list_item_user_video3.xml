@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dip"
+    android:background="@drawable/list_gradient" >
+    
+     <com.rm.kismet_cooking.UrlImageView2
+        android:id="@+id/userVideoThumbImageView3"
+        android:layout_width="162dp"
+        android:layout_height="140dp"
+        android:contentDescription="YouTube video thumbnail"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="6dip"
+        android:src="@drawable/ic_launcher"/>	
+      
+<TextView
+        android:id="@+id/userVideoTitleTextView3"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:text="Video Title Not Found" 
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"        
+        android:layout_toRightOf="@id/userVideoThumbImageView3"/>
+
+ <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_toRightOf="@id/userVideoThumbImageView2"
+        android:layout_marginRight="10dp" >
+		<Button	      
+		    android:id="@+id/fav"
+			android:layout_width="24dp"
+	      	android:layout_height="24dp"
+	      	android:background="@drawable/del1"
+	      	android:layout_alignParentRight="true"	      	
+	      	android:contentDescription="Delete"/>
+		
+</RelativeLayout>
+  
+</RelativeLayout> 

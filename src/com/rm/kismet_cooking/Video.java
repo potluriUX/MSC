@@ -71,6 +71,17 @@ public class Video implements Serializable {
 			context.startActivity(intent);            
         }
     };
+    
+    OnClickListener listener3 = new OnClickListener(){ // the book's action
+        @Override
+        public void onClick(View v) {
+           
+        	DatabaseHandler db = new DatabaseHandler(context);	
+    		db.deleteFav(id); 
+    		
+    		  
+        }
+    };
 	
 	public Video(String title, String url, String thumbUrl, String id) {
 		super();

@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 public class HistoryActivity extends Activity {
 	private HashMap<String, String> hmap = new HashMap<String, String>() ;
-	private VideosListView historyListView;
+	private VideosListView3 historyListView;
 
     @SuppressLint("NewApi") 
     @Override
@@ -30,7 +30,7 @@ public class HistoryActivity extends Activity {
         super.onCreate(savedInstanceState);
         final Context context = this;
         setContentView(R.layout.activity_history);        
-        historyListView = (VideosListView) findViewById(R.id.historyVideosListView);
+        historyListView = (VideosListView3) findViewById(R.id.historyVideosListView);
         Bundle b = getIntent().getExtras();
 		String value = b.getString("favactivity");
 		
@@ -63,22 +63,22 @@ public class HistoryActivity extends Activity {
 		        hmap.put(String.valueOf(cn.get_id()), str);
 		        i++;
 	        }
-	        VideosListView historyVideosListView = (VideosListView) findViewById(R.id.historyVideosListView);
+	        VideosListView3 historyVideosListView = (VideosListView3) findViewById(R.id.historyVideosListView);
 	        TextView noHistory = (TextView) findViewById(R.id.HistoryVideos);
 	        if(value.equals("true")){
 	        	noHistory.setText("Watch later Videos");
         	}
         	
 	        
-	        historyVideosListView.getLayoutParams().height = i*280;	        
+	        historyVideosListView.getLayoutParams().height = i*300;	        
 	        new GetYouTubeHistoryVideosTask(responseRelatedHandler, hmap).run();
         }else{
         	TextView noHistory = (TextView) findViewById(R.id.HistoryVideos);
         	if(value.equals("true")){
-        		noHistory.setText("No Watch later Videos Avaliable");
+        		noHistory.setText("No Videos Avaliable");
         	}
         	else{
-        		noHistory.setText("No History Videos Avaliable");
+        		noHistory.setText("No History Avaliable");
         		
         	}
         }

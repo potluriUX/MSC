@@ -75,8 +75,8 @@ public class VideosAdapter3 extends BaseAdapter {
 		// Set the title for the list item
 		title.setText(video.getTitle());
 		//fav.setOnClickListener(video.listener3);
-		fav.setTag(position);
 		final String val = video.id;
+		
 		fav.setOnClickListener(new OnClickListener()
 		{
 		    @Override
@@ -84,14 +84,8 @@ public class VideosAdapter3 extends BaseAdapter {
 		    {
 		    	DatabaseHandler db = new DatabaseHandler(context);	
 	    		db.deleteFav(val); 
-		    	videos.remove((Integer)v.getTag());
-		       // ((HistoryActivity) activity).refreshList();
-		        //Integer index = (Integer) v.getTag();
-		       // DatabaseHandler db = new DatabaseHandler(context);	
-	    		//db.deleteFav(video.id); 
-	    		//allLinks.remove(index.intValue());  
-                notifyDataSetChanged();
-                notifyDataSetInvalidated();
+		    	videos.remove(position);
+		    	notifyDataSetChanged();
                 
 		    }
 		});

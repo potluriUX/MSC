@@ -54,7 +54,7 @@ public class VideosAdapter3 extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, final ViewGroup parent) {
 		// If convertView wasn't null it means we have already set it to our list_item_user_video so no need to do it again
 		if(convertView == null){
 			// This is the layout we are using for each row in our list
@@ -86,6 +86,9 @@ public class VideosAdapter3 extends BaseAdapter {
 	    		db.deleteFav(val); 
 		    	videos.remove(position);
 		    	notifyDataSetChanged();
+		    	//View viewParent = (View)checkBox.getParent();
+		    	//v historyVideosListView = (v) findViewById(R.id.historyVideosListView);
+		    	parent.getLayoutParams().height = (Integer)parent.getLayoutParams().height - 300;	    
                 
 		    }
 		});

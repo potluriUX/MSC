@@ -20,7 +20,7 @@ public class Video implements Serializable {
 	private String url;
 	// A link to a still image of the youtube video
 	private String thumbUrl;
-	private String id;
+	public String id;
 	public Context context;
 	private int currentImage = 0;
 	//private String prevvalue;
@@ -78,7 +78,6 @@ public class Video implements Serializable {
            
         	DatabaseHandler db = new DatabaseHandler(context);	
     		db.deleteFav(id); 
-    		
     		  
         }
     };

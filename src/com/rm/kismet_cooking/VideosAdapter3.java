@@ -74,7 +74,27 @@ public class VideosAdapter3 extends BaseAdapter {
 		thumb.setImageDrawable(video.getThumbUrl());
 		// Set the title for the list item
 		title.setText(video.getTitle());
-		fav.setOnClickListener(video.listener3);
+		//fav.setOnClickListener(video.listener3);
+		fav.setTag(position);
+		final String val = video.id;
+		fav.setOnClickListener(new OnClickListener()
+		{
+		    @Override
+		    public void onClick(View v)
+		    {
+		    	DatabaseHandler db = new DatabaseHandler(context);	
+	    		db.deleteFav(val); 
+		    	videos.remove((Integer)v.getTag());
+		       // ((HistoryActivity) activity).refreshList();
+		        //Integer index = (Integer) v.getTag();
+		       // DatabaseHandler db = new DatabaseHandler(context);	
+	    		//db.deleteFav(video.id); 
+	    		//allLinks.remove(index.intValue());  
+                notifyDataSetChanged();
+                notifyDataSetInvalidated();
+                
+		    }
+		});
 		title.setOnClickListener(video.listener2);
 		thumb.setOnClickListener(video.listener2);
 		return convertView;

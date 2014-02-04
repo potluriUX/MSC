@@ -24,6 +24,7 @@ public class HistoryActivity extends Activity {
 	private HashMap<String, String> hmap = new HashMap<String, String>() ;
 	private VideosListView3 historyListView;
 	private VideosListView historyListViewActual;
+	private String favflag;
     @SuppressLint("NewApi") 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class HistoryActivity extends Activity {
         
         Bundle b = getIntent().getExtras();
 		String value = b.getString("favactivity");
-		
+		favflag = value;
         DatabaseHandler db = new DatabaseHandler(this);
  
         // Inserting Contacts
@@ -144,8 +145,13 @@ public class HistoryActivity extends Activity {
 		Library relatedlib = (Library) relmsg.getData().get(GetYouTubeHistoryVideosTask.RELATEDLIBRARY);		
 		// Because we have created a custom ListView we don't have to worry about setting the adapter in the activity
 		// we can just call our custom method with the list of items we want to display
-		historyListView.setVideos(relatedlib.getVideos());
+		if(favflag.equals("true")){
+			historyListView.setVideos(relatedlib.getVideos());
 	}
+		else{
+			historyListViewActual.setVideos(relatedlib.getVideos());
+		}
+		}
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

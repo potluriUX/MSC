@@ -88,7 +88,7 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 					JSONObject json_rel = new JSONObject(jsonString_rel);
 					JSONObject data =json_rel.getJSONObject("data");						
 					String id_rel = data.optString("id");			
-					String title_rel = " "+data.optString("title") ;//+ "\n Likes: " +data.optString("likeCount")+ "\n Views: " + data.optString("viewCount");
+					String title_rel = " "+data.optString("title")+ "\nViews: " + data.optString("viewCount"); ;//+ "\n Likes: " +data.optString("likeCount")+ "\n Views: " + data.optString("viewCount");
 					String url_rel;
 					try {
 						url_rel = data.getJSONObject("player").getString("mobile");

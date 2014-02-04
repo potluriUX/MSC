@@ -1,13 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="6dip"
+    android:padding="3dip"
     android:background="@drawable/list_gradient" >
     
      <com.rm.kismet_cooking.UrlImageView2
         android:id="@+id/userVideoThumbImageView3"
-        android:layout_width="162dp"
-        android:layout_height="140dp"
+        android:layout_width="145dp"
+        android:layout_height="126dp"
         android:contentDescription="YouTube video thumbnail"
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
@@ -17,11 +17,12 @@
 <TextView
         android:id="@+id/userVideoTitleTextView3"
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:text="Video Title Not Found" 
         android:layout_marginBottom="10dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"        
+        android:layout_alignParentTop="true"
+        android:padding="3dip"              
         android:layout_toRightOf="@id/userVideoThumbImageView3"/>
 
  <RelativeLayout

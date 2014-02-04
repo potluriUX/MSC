@@ -88,7 +88,7 @@ public class VideosAdapter3 extends BaseAdapter {
 		    	notifyDataSetChanged();
 		    	//View viewParent = (View)checkBox.getParent();
 		    	//v historyVideosListView = (v) findViewById(R.id.historyVideosListView);
-		    	parent.getLayoutParams().height = (Integer)parent.getLayoutParams().height - 300;	    
+		    	parent.getLayoutParams().height = (Integer)parent.getLayoutParams().height - 265;	    
                 
 		    }
 		});

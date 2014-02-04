@@ -45,7 +45,7 @@
 		  <com.rm.kismet_cooking.VideosListView2
 		        android:id="@+id/videosListView"
 		        android:layout_width="fill_parent"
-		        android:layout_height="150dp"
+		        android:layout_height="133dp"
 		        android:layout_marginTop="160dp"
 		        android:background="#efefef"/>
 		   <TextView 
@@ -60,7 +60,7 @@
 			<com.rm.kismet_cooking.VideosListView2	        
 			    android:id="@+id/relatedVideosListView"
 		        android:layout_width="fill_parent"
-		        android:layout_height="766dp"
+		        android:layout_height="665dp"
 		        android:layout_marginTop="340dp"
 		        android:background="#efefef"/>
 		</FrameLayout>

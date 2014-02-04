@@ -73,7 +73,7 @@ public class HistoryActivity extends Activity {
 	        
 	       
 	        if(value.equals("true")){
-	        	historyListView.getLayoutParams().height = i*300;	
+	        	historyListView.getLayoutParams().height = i*265;	
 	        	   historyListView.setOnItemClickListener(new OnItemClickListener() {
 	       			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				
 	       				 
@@ -94,7 +94,7 @@ public class HistoryActivity extends Activity {
 	       			
 	       		});
 	        }else{
-	        	historyListViewActual.getLayoutParams().height = i*300;	   
+	        	historyListViewActual.getLayoutParams().height = i*265;	   
 	        	historyListViewActual.setOnItemClickListener(new OnItemClickListener() {
 	       			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				
 	       				 

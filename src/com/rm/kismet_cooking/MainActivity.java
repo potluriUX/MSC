@@ -137,6 +137,45 @@ public class MainActivity extends Activity{
 	        	rnd++;
 	        }
 		}
+    	else if(packagename.equals("com.rm.kismet_makeup")){
+    		String[] users = {"MichellePhan","beautydept","emilynoel83","LuxyHair","cutepolish","missglamorazzi",
+    		"kandeejohnson",
+    		"MakeupByTiffanyD","SarahVictor","DiamondsAndHeels14"
+    		};
+    		new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
+    		    	
+    		        if(rnd > (users.length-2)){
+    		        	rnd=0;
+    		        }else{
+    		        	rnd++;
+    		        }
+    	}
+    	else if(packagename.equals("com.rm.kismet_tcomedy")){
+    		String[] users = {"TeluguComedyCentral", "NavvulaTV", "SriBalajiComedy", "idreamcomedy", "santosh9sri"
+    		};
+    		new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
+    		    	
+    		        if(rnd > (users.length-2)){
+    		        	rnd=0;
+    		        }else{
+    		        	rnd++;
+    		        }
+    	}
+    	else if(packagename.equals("com.rm.kismet_tamil")){
+    		String[] users = {"tamilmovies", "tamilpeak", "WAMIndiaTamil", "rajshritamil", "tamilbiscoot", "RajVideoVisionTamil", "CinemaJunction",
+        			"tamilmovies", "rajshritamil", "tamilpeak","CinemaJunction"
+    		};
+    		new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
+    		    	
+    		        if(rnd > (users.length-2)){
+    		        	rnd=0;
+    		        }else{
+    		        	rnd++;
+    		        }
+    	}
+    	
+    	
+    	
    
     	
     }

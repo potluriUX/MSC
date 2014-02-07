@@ -64,8 +64,16 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			Boolean cond = false;
 			JSONArray jsonArray;
 			JSONArray jsonArray_rel;
+			String packagename = this.getClass().getPackage().getName();
 		do{
-			url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc";//&duration=long
+			
+			if(packagename.equals("com.ravi_manasa.kismet") || packagename.equals("com.rm.kismet_tamil")) {
+				url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&duration=long";
+				
+			}else{
+				url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc";
+				Log.d("telugu");
+			}
 			HttpUriRequest request_ti = new HttpGet(url_request);
 			//HttpUriRequest request_ti = new HttpGet("https://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2&alt=jsonc&duration=long");
 			HttpResponse response_ti = client.execute(request_ti);

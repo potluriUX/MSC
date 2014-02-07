@@ -104,29 +104,41 @@ public class MainActivity extends Activity{
     	// We start a new task that does its work on its own thread
     	// We pass in a handler that will be called when the task has finished
     	// We also pass in the name of the user we are searching YouTube for
+    	String packagename = this.getClass().getPackage().getName();
+    	if(packagename.equals("com.rm.kismet_cooking")){
+	    	String[] users = { 
+	    			"LauraVitalesKitchen", "vahchef", "JamieOliver",  "foodwishes", "BBCFood", "BarbecueWeb","ShowMeTheCurry", 
+	    			"EverydayFoodVideos","BBCFood", "robjnixon", "vahchef", "JamieOliver", "BBCFood", "LauraVitalesKitchen",
+	    			"SimpleCookingChannel", "CookingChannel", "bettyskitchen", "foodwishes", "robjnixon", "OnePotChefShow", 
+	    			"leanbodylifestyle", "wantanmien", "Maangchi", "runnyrunny999"
+	    	};
+	    		new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
+	    	
+	        if(rnd > (users.length-2)){
+	        	rnd=0;
+	        }else{
+	        	rnd++;
+	        }
+    	}
+    	else if (packagename.equals("com.ravi_manasa.kismet")) {
+    		String[] users = {"sribalajimovies", "shalimarcinema", "rajshritelugu", "thesantoshvideos",  
+        			"sribalajimovies", 
+        			"geethaarts","idreammovies", "sribalajimovies", "thesantoshvideos",  
+        			"geethaarts", "shemarootelugu", "adityacinema", "sribalajimovies",  
+        			"mangoVideos", "thesantoshvideos",
+        			 "newvolgavideo",  "geethaarts",  "rajshritelugu", "shalimarcinema", 
+        			 "thecinecurrytelugu", "rajshritelugu", "sribalajimovies", "shalimarcinema"
+        	};
+	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
+	    	
+	        if(rnd > (users.length-2)){
+	        	rnd=0;
+	        }else{
+	        	rnd++;
+	        }
+		}
+   
     	
-    	String[] users = { 
-    			"LauraVitalesKitchen", "vahchef", "JamieOliver",  "foodwishes", "BBCFood", "BarbecueWeb","ShowMeTheCurry", 
-    			"EverydayFoodVideos","BBCFood", "robjnixon", "vahchef", "JamieOliver", "BBCFood", "LauraVitalesKitchen",
-    			"SimpleCookingChannel", "CookingChannel", "bettyskitchen", "foodwishes", "robjnixon", "OnePotChefShow", 
-    			"leanbodylifestyle", "wantanmien", "Maangchi", "runnyrunny999"
-    	};
-    	/*String[] users = {"sribalajimovies", "shalimarcinema", "rajshritelugu", "thesantoshvideos",  
-    			"sribalajimovies", 
-    			"geethaarts","idreammovies", "sribalajimovies", "thesantoshvideos",  
-    			"geethaarts", "shemarootelugu", "adityacinema", "sribalajimovies",  
-    			"mangoVideos", "thesantoshvideos",
-    			 "newvolgavideo",  "geethaarts",  "rajshritelugu", "shalimarcinema", 
-    			 "thecinecurrytelugu", "rajshritelugu", "sribalajimovies", "shalimarcinema"
-    	};
-*/
-    	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
-    	
-        if(rnd > (users.length-2)){
-        	rnd=0;
-        }else{
-        	rnd++;
-        }
     }
    
     // This is the handler that receives the response when the YouTube task has finished

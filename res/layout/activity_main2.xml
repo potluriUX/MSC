@@ -2,10 +2,21 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_height="fill_parent"
   android:layout_width="fill_parent" >
+
+
+    
+
  	<LinearLayout 
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+        <com.google.android.gms.ads.AdView
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/adView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    ads:adUnitId=" ca-app-pub-3730266544385182/8929735991"
+    ads:adSize="BANNER"/>
 		 <FrameLayout 
 		    android:id="@+id/container"
 		    android:layout_width="fill_parent"
@@ -34,7 +45,7 @@
 		      android:layout_marginTop="40dp"
 		      android:layout_gravity="right"
 		      android:background="@drawable/button"   />
-		  <TextView android:text="Suggested Recipe"
+		  <TextView android:text="Suggested Movie"
 		      android:id="@+id/suggestedMovie"
 		      android:padding="15dip"
 		      android:textSize="16dip"
@@ -42,7 +53,7 @@
 		      android:layout_marginTop="120dp"
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"/>
-		  <com.rm.kismet_cooking.VideosListView2
+		  <com.rm.kismet_tamil.VideosListView2
 		        android:id="@+id/videosListView"
 		        android:layout_width="fill_parent"
 		        android:layout_height="133dp"
@@ -50,14 +61,14 @@
 		        android:background="#efefef"/>
 		   <TextView 
 		       android:id="@+id/moreMovies"
-		       android:text="More Recipes"
+		       android:text="More Movies"
 		       android:padding="15dip"
 		       android:textSize="16dip"
 		       android:textColor="#ffffff"
 		       android:layout_marginTop="300dp"
 		       android:layout_width="fill_parent"
 		       android:layout_height="wrap_content"/>		
-			<com.rm.kismet_cooking.VideosListView2	        
+			<com.rm.kismet_tamil.VideosListView2	        
 			    android:id="@+id/relatedVideosListView"
 		        android:layout_width="fill_parent"
 		        android:layout_height="665dp"

@@ -4,7 +4,7 @@
     android:padding="3dip"
     android:background="@drawable/list_gradient" >
     
-     <com.rm.kismet_cooking.UrlImageView2
+     <com.rm.kismet_tamil.UrlImageView2
         android:id="@+id/userVideoThumbImageView2"
         android:layout_width="145dp"
         android:layout_height="126dp"

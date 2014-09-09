@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rm.kismet_cooking"
-    android:versionCode="5"
-    android:versionName="1.2" 
+    package="com.rm.kismet_tamil"
+    android:versionCode="9"
+    android:versionName="1.7" 
     android:configChanges="orientation|keyboardHidden">
 
-   <uses-sdk android:minSdkVersion="8" />
+   <uses-sdk android:minSdkVersion="9" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
     <application
         android:allowBackup="true"
-        android:icon="@drawable/cicon2"
-        android:label="@string/cicon2"
+        android:icon="@drawable/ricon"
+        android:label="@string/ricon"
         android:theme="@style/AppTheme" >
+        <meta-data android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version"/>
+         <activity android:name="com.google.android.gms.ads.AdActivity"
+          android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         <activity
             android:name="com.google.android.youtube.player.YouTubeStandalonePlayer"
             android:configChanges="keyboardHidden|orientation|screenSize"
             
  />
          <activity
-            android:name="com.rm.kismet_cooking.MainActivity2"
+            android:name="com.rm.kismet_tamil.MainActivity2"
             android:label="@string/app_name" 
              android:configChanges="orientation|keyboardHidden"
             
              ></activity>
         <activity
-            android:name="com.rm.kismet_cooking.MainActivity"
+            android:name="com.rm.kismet_tamil.MainActivity"
             android:label="@string/app_name"
              android:configChanges="orientation|keyboardHidden" 
               android:screenOrientation="portrait"
@@ -37,14 +43,19 @@
             </intent-filter>
         </activity>
         <activity
-        android:name="com.rm.kismet_cooking.HistoryActivity"
+        android:name="com.rm.kismet_tamil.HistoryActivity"
         android:label="@string/app_name"
-        android:parentActivityName="com.rm.kismet_cooking.MainActivity" 
+        android:parentActivityName="com.rm.kismet_tamil.MainActivity" 
         >
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.rm.kismet_cooking.MainActivity" />
+            android:value="com.ravi_manasa.kismet.MainActivity" />
+
+
+
     </activity>
+   
+        
     </application>
 
 </manifest>

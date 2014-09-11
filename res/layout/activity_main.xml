@@ -6,7 +6,13 @@
     android:layout_gravity="center" 
     android:gravity="center_horizontal">
 
-  
+   <com.google.android.gms.ads.AdView
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/adView2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    ads:adUnitId="ca-app-pub-3730266544385182/8929735991"
+    ads:adSize="BANNER"/>
     
     <com.google.android.youtube.player.YouTubePlayerView
 		android:id="@+id/youtube_view"

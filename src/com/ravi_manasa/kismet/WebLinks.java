@@ -1,4 +1,4 @@
-package com.rm.kismet_tamil;
+package com.ravi_manasa.kismet;
 
 public class WebLinks {
 	int _id;

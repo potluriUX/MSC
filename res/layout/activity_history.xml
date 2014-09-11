@@ -19,13 +19,13 @@
 	      	android:textColor="#ffffff"
 	      	android:layout_width="fill_parent"
 	      	android:layout_height="wrap_content"/>
- 		 <com.rm.kismet_tamil.VideosListView	          
+ 		 <com.ravi_manasa.kismet.VideosListView	          
 		    android:id="@+id/historyVideosListViewActual"
 	        android:layout_width="fill_parent"
 	        android:layout_height="0dp"
 	        android:layout_marginTop="40dp"
 	        android:background="#efefef"/>  
-		<com.rm.kismet_tamil.VideosListView3	          
+		<com.ravi_manasa.kismet.VideosListView3	          
 		    android:id="@+id/historyVideosListViewFav"
 	        android:layout_width="fill_parent"
 	        android:layout_height="0dp"

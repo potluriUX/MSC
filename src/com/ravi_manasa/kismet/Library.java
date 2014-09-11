@@ -1,4 +1,4 @@
-package com.rm.kismet_tamil;
+package com.ravi_manasa.kismet;
 
 import java.io.Serializable;
 import java.util.List;

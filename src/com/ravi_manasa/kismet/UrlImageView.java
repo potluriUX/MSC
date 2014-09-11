@@ -1,4 +1,4 @@
-package com.rm.kismet_tamil;
+package com.ravi_manasa.kismet;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -17,19 +17,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-public class UrlImageView2 extends LinearLayout {
+public class UrlImageView extends LinearLayout {
 
 	private Context mContext;
 	private Drawable mDrawable;
 	private ProgressBar mSpinner;
 	private ImageView mImage;
 
-	public UrlImageView2(Context context, AttributeSet attrs) {
+	public UrlImageView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context);
 	}
 
-	public UrlImageView2(Context context) {
+	public UrlImageView(Context context) {
 		super(context);
 		init(context);
 	}

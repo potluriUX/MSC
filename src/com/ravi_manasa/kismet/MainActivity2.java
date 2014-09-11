@@ -1,4 +1,4 @@
-package com.rm.kismet_tamil;
+package com.ravi_manasa.kismet;
 
 
 import android.annotation.SuppressLint;
@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -17,10 +21,12 @@ import com.google.android.youtube.player.YouTubeStandalonePlayer;
 
 
 
+
 public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
 	static private final String DEVELOPER_KEY = "AIzaSyAfnzhBO-Nzj119V3gdV4LpWaTRGGSyE0A";
 	static private final String VIDEO = "4SK0cUNMnMM";
+	InterstitialAd interstitial;
 	
 	@SuppressLint("NewApi") @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,19 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 		String value = b.getString("key");
 		String previd = b.getString("previd");
 		Boolean flag = b.getBoolean("historyflag");
+		
+	       AdView adView =   (AdView)this.findViewById(R.id.adView2);
+	        AdRequest adRequest = new AdRequest.Builder()
+	       // .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+	        .build();
+	     //   adView.setAdSize(AdSize.BANNER);
+	        //adView.setAdUnitId("ca-app-pub-3730266544385182/1506030791");ca-app-pub-3730266544385182/1506030791
+	       
+	       // AdView adView = new AdView(this);
+	        adView.loadAd(adRequest);
+	        // Load ads into Interstitial Ads
+	        //interstitial.loadAd(adRequest);
+	     
 		if(flag != true){
 			DatabaseHandler db = new DatabaseHandler(this);	
 			
@@ -57,7 +76,12 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 		  //  startActivityForResult(videoIntent, 1);
 	
 	}
-
+	   public void displayInterstitial() {
+	        // If Ads are loaded, show Interstitial else show nothing.
+	        if (interstitial.isLoaded()) {
+	            interstitial.show();
+	        }
+	    }
 	@Override
 	public void onInitializationFailure(Provider provider, YouTubeInitializationResult error) {
 		Toast.makeText(this, "Oh no! "+error.toString(), Toast.LENGTH_LONG).show();

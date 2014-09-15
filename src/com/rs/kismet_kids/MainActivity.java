@@ -1,4 +1,4 @@
-package com.ravi_manasa.kismet;
+package com.rs.kismet_kids;
 import java.util.HashMap;
 
 
@@ -24,6 +24,7 @@ import java.lang.reflect.Field;
 import com.google.android.gms.ads.*;
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
 import com.google.android.gms.ads.doubleclick.PublisherAdView;
+
 
 
 
@@ -218,7 +219,18 @@ public class MainActivity extends Activity{
     	
     	
     	
-   
+    	else if(packagename.equals("com.rs.kismet_kids")){
+    		String[] users = {"hooplakidz", "BabyFirstTV", "AllBabiesChannel", "kidscamp", "NurseryRhymeStreet", "TeeHeeTown", "KidsTV123",
+        			"omigrad", "DreamEnglishKids"
+    		};
+    		new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
+    		    	
+    		        if(rnd > (users.length-2)){
+    		        	rnd=0;
+    		        }else{
+    		        	rnd++;
+    		        }
+    	}
     	
     }
    

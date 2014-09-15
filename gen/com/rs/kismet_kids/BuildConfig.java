@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.ravi_manasa.kismet;
+package com.rs.kismet_kids;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

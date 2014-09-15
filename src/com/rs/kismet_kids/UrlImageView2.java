@@ -1,4 +1,4 @@
-package com.ravi_manasa.kismet;
+package com.rs.kismet_kids;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;

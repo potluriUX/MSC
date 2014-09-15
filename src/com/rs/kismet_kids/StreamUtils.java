@@ -1,4 +1,4 @@
-package com.ravi_manasa.kismet;
+package com.rs.kismet_kids;
 
 import java.io.BufferedReader;
 import java.io.IOException;

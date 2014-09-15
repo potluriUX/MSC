@@ -1,4 +1,4 @@
-package com.ravi_manasa.kismet;
+package com.rs.kismet_kids;
 
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;

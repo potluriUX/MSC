@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Kismet: random telugu movies </string>
+    <string name="app_name">Kismet: random kids videos </string>
     <string name="micon1">Kismet: random telugu movies </string>
     <string name="comedyicon">Kismet:telugu comedy </string>
     <string name="cicon2">Kismet: random recipes </string>
     <string name="ricon">Kismet: random tamil movies </string>
     <string name="mkicon">Kismet: random makeup </string>
+     <string name="kicon1">Kismet: random kids videos </string>
     
     
     <string name="action_settings">Settings</string>

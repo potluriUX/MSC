@@ -1,4 +1,4 @@
-package com.rs.kismet_kids;
+package com.rs.kismet_mallu;
 
 import java.util.HashMap;
 import java.util.List;

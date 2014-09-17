@@ -1,4 +1,4 @@
-package com.rs.kismet_kids;
+package com.rs.kismet_mallu;
 
 public class WebLinks {
 	int _id;

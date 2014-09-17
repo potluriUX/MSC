@@ -1,4 +1,4 @@
-package com.rs.kismet_kids;
+package com.rs.kismet_mallu;
 
 import java.util.List;
 
@@ -23,22 +23,22 @@ import android.widget.ListView;
  * 
  * @author ravi_manasa
  */
-public class VideosListView extends ListView {
+public class VideosListView2 extends ListView {
 
-	public VideosListView(Context context, AttributeSet attrs, int defStyle) {
+	public VideosListView2(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
 
-	public VideosListView(Context context, AttributeSet attrs) {
+	public VideosListView2(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	public VideosListView(Context context) {
+	public VideosListView2(Context context) {
 		super(context);
 	}
 
 	public void setVideos(List<Video> videos){
-		VideosAdapter adapter = new VideosAdapter(getContext(), videos);
+		VideosAdapter2 adapter = new VideosAdapter2(getContext(), videos);
 		setAdapter(adapter);
 	}
 	

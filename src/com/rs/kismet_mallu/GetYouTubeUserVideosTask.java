@@ -1,4 +1,4 @@
-package com.rs.kismet_kids;
+package com.rs.kismet_mallu;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			String packagename = this.getClass().getPackage().getName();
 		do{
 			
-			if(packagename.equals("com.ravi_manasa.kismet") || packagename.equals("com.rm.kismet_tamil")) {
+			if(packagename.equals("com.ravi_manasa.kismet") || packagename.equals("com.rm.kismet_tamil")||packagename.equals("com.rs.kismet_mallu")) {
 				url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&duration=long";
 				
 			}else{

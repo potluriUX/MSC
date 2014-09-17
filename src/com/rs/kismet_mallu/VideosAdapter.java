@@ -1,4 +1,4 @@
-package com.rs.kismet_kids;
+package com.rs.kismet_mallu;
 
 import java.util.List;
 
@@ -13,11 +13,8 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -28,22 +25,19 @@ import android.widget.TextView;
  * you may want to look at better using your view resources: http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html
  * @author ravi_manasa
  */
-public class VideosAdapter2 extends BaseAdapter {
+public class VideosAdapter extends BaseAdapter {
 	// The list of videos to display
 	List<Video> videos;
 	// An inflator to use when creating rows
 	private LayoutInflater mInflater;
-	private Context context;
-	
 	
 	/**
 	 * @param context this is the context that the list will be shown in - used to create new list rows
 	 * @param videos this is a list of videos to display
 	 */
-	public VideosAdapter2(Context context, List<Video> videos) {
+	public VideosAdapter(Context context, List<Video> videos) {
 		this.videos = videos;
 		this.mInflater = LayoutInflater.from(context);
-		this.context = context;
 	}
 
 	@Override
@@ -67,24 +61,20 @@ public class VideosAdapter2 extends BaseAdapter {
 		if(convertView == null){
 			// This is the layout we are using for each row in our list
 			// anything you declare in this layout can then be referenced below
-			convertView = mInflater.inflate(R.layout.list_item_user_video2, null);
+			convertView = mInflater.inflate(R.layout.list_item_user_video, null);
 		}
 		// We are using a custom imageview so that we can load images using urls
 		// For further explanation see: http://blog.blundell-apps.com/imageview-with-loading-spinner/
-		UrlImageView2 thumb = (UrlImageView2) convertView.findViewById(R.id.userVideoThumbImageView2);
+		UrlImageView thumb = (UrlImageView) convertView.findViewById(R.id.userVideoThumbImageView);
 		
-		TextView title = (TextView) convertView.findViewById(R.id.userVideoTitleTextView2); 
-		Button fav = (Button) convertView.findViewById(R.id.fav); 
+		TextView title = (TextView) convertView.findViewById(R.id.userVideoTitleTextView); 
 		// Get a single video from our list
 		Video video = videos.get(position);
-		video.context = context;
 		// Set the image for the list item
 		thumb.setImageDrawable(video.getThumbUrl());
 		// Set the title for the list item
 		title.setText(video.getTitle());
-		fav.setOnClickListener(video.listener1);
-		title.setOnClickListener(video.listener2);
-		thumb.setOnClickListener(video.listener2);
+		
 		return convertView;
 	}
 }

@@ -1,4 +1,4 @@
-package com.rs.kismet_kids;
+package com.rs.kismet_mallu;
 import java.util.HashMap;
 
 
@@ -231,6 +231,18 @@ public class MainActivity extends Activity{
     		        	rnd++;
     		        }
     	}
+    	else if(packagename.equals("com.rs.kismet_mallu")){
+    		String[] users = {"hungamamalayalam","LehrenMalayalam","malayalambiscoot","shahmonhtnsour","apimalayalam","malayalamfullmoviez","SainaVideoVision",
+    				"MillenniumTalkies","malayalachalachitram","MalayalamFullMovieHM"
+    		};
+    		new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
+    		    	
+    		        if(rnd > (users.length-2)){
+    		        	rnd=0;
+    		        }else{
+    		        	rnd++;
+    		        }
+    	}
     	
     }
    
@@ -302,16 +314,20 @@ Bundle b = new Bundle();
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.action_history:
+	    
+	        if(item.getItemId()==R.id.action_history){
 	            openHistory();
 	            return true;
-	        case R.id.action_fav:
-	            openFav();
-	            return true;
-	        default:
+	        }else if
+	        (item.getItemId()== R.id.action_fav){
+	        	openFav();
+	        	return true;
+	        }
+	       
 	            return super.onOptionsItemSelected(item);
-	    }
+	        
+	        //return super.onOptionsItemSelected(item);
+	    
 	}
 	
 }
